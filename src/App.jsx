@@ -1,6 +1,11 @@
+import Navbar from "./layouts/Navbar/Navbar";
+
 function App() {
   return (
-    <h1>Mana Meals</h1>
+    <>
+      <Navbar />
+      <h1>Mana Meals</h1>
+    </>
   );
 }
 
