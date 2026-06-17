@@ -1,39 +1,47 @@
-function RestaurantCard({ id, name, cuisine, rating, onAddToCart }) {
+import "./RestaurantCard.css";
+
+function RestaurantCard({
+  id,
+  name,
+  cuisine,
+  rating,
+  onAddToCart,
+}) {
   return (
-    <div
-      style={{
-        width: "250px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        padding: "15px",
-      }}
-    >
+    <div className="restaurant-card">
       <img
-        src="https://picsum.photos/250/150"
-        alt="food"
-        style={{
-          width: "100%",
-          borderRadius: "10px",
-        }}
+        className="restaurant-image"
+        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+        alt={name}
       />
 
-      <h3>{name}</h3>
-      <p>{cuisine}</p>
-      <p>⭐ {rating}</p>
+      <div className="restaurant-content">
+        <div className="discount">
+          🔥 20% OFF
+        </div>
 
-      <button
-        onClick={() => onAddToCart({ id, name, cuisine, rating })}
-        style={{
-          padding: "10px",
-          backgroundColor: "orange",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Add To Cart
-      </button>
+        <h3>{name}</h3>
+
+        <p>{cuisine}</p>
+
+        <p className="details">
+          ⭐ {rating} | ⏱️ 25 mins
+        </p>
+
+        <button
+          className="cart-btn"
+          onClick={() =>
+            onAddToCart({
+              id,
+              name,
+              cuisine,
+              rating,
+            })
+          }
+        >
+          Add To Cart
+        </button>
+      </div>
     </div>
   );
 }

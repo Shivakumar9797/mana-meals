@@ -1,7 +1,9 @@
 import { useState } from "react";
+import "./Home.css";
 import CategoryFilter from "../../components/CategoryFilter/CategoryFilter";
 import RestaurantCard from "../../components/RestaurantCard/RestaurantCard";
 import { restaurants } from "../../services/data";
+import heroFood from "../../assets/images/hero-food.jpg";
 
 function Home() {
   const [search, setSearch] = useState("");
@@ -15,23 +17,26 @@ function Home() {
     
   return (
     <div style={{ padding: "20px" }}>
-      <div
-        style={{
-          backgroundColor: "#fff3e6",
-          padding: "40px",
-          borderRadius: "15px",
-        }}
-      >
-        <h1>50% OFF ON FIRST ORDER</h1>
+     <div className="hero">
+  <div className="hero-content">
+    <h1>Delicious Food Delivered To Your Doorstep</h1>
 
-        <p>
-          Order from top rated local restaurants
-        </p>
+    <p>
+      Fresh food from your favorite restaurants
+      with fast delivery.
+    </p>
 
-        <button>
-          Order Now
-        </button>
-      </div>
+    <button className="hero-btn">
+      Order Now
+    </button>
+  </div>
+
+    <img
+      className="hero-image"
+      src={heroFood}
+      alt="Food"
+    />
+</div>
 
       <CategoryFilter />
       <input
@@ -46,15 +51,15 @@ function Home() {
         borderRadius: "5px",}}
       />
 
-      <h2>Popular Restaurants</h2>
-
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          flexWrap: "wrap",
-        }}
-      >
+      <h2
+  style={{
+    marginBottom: "20px",
+    color: "#333",
+  }}
+>
+  🍴 Popular Restaurants
+</h2>
+      <div className="restaurant-grid">
         {restaurants
   .filter((restaurant) =>
     restaurant.name.toLowerCase().includes(search.toLowerCase())
@@ -72,7 +77,14 @@ function Home() {
     
   ))}
       </div>
-      <h3>Cart Items: {cart.length}</h3>
+      <h3
+  style={{
+    marginTop: "30px",
+    color: "#ff6b35",
+  }}
+>
+  🛒 Cart Items: {cart.length}
+</h3>
       <ul>
   {cart.map((item, index) => (
     <li key={index}>
